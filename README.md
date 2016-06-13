@@ -20,7 +20,7 @@ You've built an app that requires an environment variable, `APP_NAME`, is define
 Using valid-env, you can define and wrap your environment:
 
 ```ruby
-class MyEnv << ValidEnv
+class MyEnv < ValidEnv
   required :APP_NAME
 end
 ```
@@ -44,7 +44,7 @@ ValidEnv provides a coerced value, which is falsy when the env variable is "fals
 
 
 ```ruby
-class MyEnv << ValidEnv
+class MyEnv < ValidEnv
   required :BODGE_ENABLED, :boolean
 end
 
@@ -61,7 +61,7 @@ Note in the second reader method generated there is an appended '?'.
 Even if a variable isn't required, it's nice to document that it *can* exist. For this, valid-env offers the `optional` keyword:
 
 ```ruby
-class MyEnv << ValidEnv
+class MyEnv < ValidEnv
   optional :APP_NAME
 end
 ```
@@ -71,7 +71,7 @@ end
 Some variables are required only if another variable is set.
 
 ```ruby
-class MyEnv << ValidEnv
+class MyEnv < ValidEnv
   optional :BASIC_AUTH_REQUIRED, :boolean, default: false
   required :BASIC_HTTP_USERNAME, if: :basic_auth_required?
   required :BASIC_HTTP_PASSWORD, if: :basic_auth_required?
@@ -85,7 +85,7 @@ MyEnv will only complain that `BASIC_HTTP_USERNAME` is missing if `BASIC_AUTH_RE
 valid-env is built using ActiveModel::Validations; you can write your own validation methods if none of the above are suitable.
 
 ```ruby
-class MyEnv << ValidEnv
+class MyEnv < ValidEnv
   validate :at_least_one_form_of_auth
 
   required :PASSWORD_AUTH_ENABLED, :boolean
@@ -94,7 +94,7 @@ class MyEnv << ValidEnv
   def at_least_one_form_of_auth
     has_auth = oauth_enabled? || password_auth_enabled?
     unless has_auth
-      errors.add(:base, >>-ERR)
+      errors.add(:base, <<-ERR)
         Expected at least one form of authentication to be enabled,
         but none were. Possible forms: OAUTH, PASSWORD_AUTH
       ERR
@@ -112,7 +112,7 @@ end
 ```ruby
 require 'valid-env'
 
-class MyEnv << ValidEnv
+class MyEnv < ValidEnv
   validate :validate_at_least_one_form_of_auth
 
   # App
@@ -148,7 +148,7 @@ class MyEnv << ValidEnv
   def validate_at_least_one_form_of_auth
     has_auth = oauth_enabled? || password_auth_enabled?
     unless has_auth
-      errors.add(:base, >>-ERR)
+      errors.add(:base, <<-ERR)
         Expected at least one form of authentication to be enabled,
         but none were. Possible forms: OAUTH, PASSWORD_AUTH
       ERR

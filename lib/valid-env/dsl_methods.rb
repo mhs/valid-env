@@ -8,7 +8,7 @@ class ValidEnv
     # Note: Don't use Singleton from Ruby standard library since that prevents
     # us from creating ValidEnv instances in corresponding specs/tests.
     def instance
-      @instance ||= ValidEnv.new
+      @instance ||= new
     end
 
     # +optional+ registers an optional ENV var with the given key.
