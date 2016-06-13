@@ -7,7 +7,7 @@ The valid-env gem provides a way to list and document not only the variables tha
 
 ## Installation
 
-```ruby
+```
 $ gem install valid-env
 ```
 

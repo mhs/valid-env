@@ -1,7 +1,7 @@
 require 'active_model'
 require 'active_support/core_ext/string/strip'
 
-require File.dirname(__FILE__) + '/dsl_methods'
+require File.dirname(__FILE__) + '/valid-env/dsl_methods'
 # ValidEnv is the class responsible for specifying which environment variables
 # the application expects to interact with. It is so the application can
 # validate it's environment during boot.
@@ -35,10 +35,10 @@ class ValidEnv
   end
 end
 
-require File.dirname(__FILE__) + '/env_var'
-require File.dirname(__FILE__) + '/optional_env_var'
-require File.dirname(__FILE__) + '/required_env_var'
-require File.dirname(__FILE__) + '/boolean_validator'
-require File.dirname(__FILE__) + '/presence_validator'
+require File.dirname(__FILE__) + '/valid-env/env_var'
+require File.dirname(__FILE__) + '/valid-env/optional_env_var'
+require File.dirname(__FILE__) + '/valid-env/required_env_var'
+require File.dirname(__FILE__) + '/valid-env/boolean_validator'
+require File.dirname(__FILE__) + '/valid-env/presence_validator'
 
 
