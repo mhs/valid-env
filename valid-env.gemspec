@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name        = "valid-env"
   s.version     = "0.0.1"
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Zach Dennis", "Sara Gibbons", "Mutually Human"]
+  s.authors     = ["Zach Dennis", "Sara Gibbons", "Sam Bleckley", "Mutually Human"]
   s.email       = ["zdennis@mutuallyhuman.com"]
   s.homepage    = "http://github.com/mhs/valid-env"
   s.summary     = "Ensures the environment contains the variables your code needs"
